@@ -1,0 +1,28 @@
+body{
+  font-family: sans-serif;  
+  background-image: url("http://img.hdwallpaperpc.com/cover/150/Abstract_Other_just_blue_Simple_sky_light_clean_149859_detail_thumb.jpg");
+}
+#div1{
+    width:50%;
+    
+    
+} 
+
+#form{
+   
+    padding:10px 80px 20px 10px;
+    
+    
+}
+
+.extra {
+    font-family:monospace;
+    text-align:center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+span{
+	color: red;
+	font-weight: bold;
+}
