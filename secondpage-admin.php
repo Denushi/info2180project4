@@ -1,6 +1,5 @@
 <?php
   include('session.php');
-  include('database.php');
 ?>
 
 <!doctype html>
@@ -11,7 +10,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="styles.css" type ="text/css">
    <script src="script.js" type ="text/javascript"></script>
-   <title>CheapoMail</title>
+   <title>CheapoMail - Home</title>
 </head>
 <body>
    <div id= "head">
@@ -47,7 +46,7 @@
    </div>
       
 <div class="container" id="container">
-<img src="cm_logo.png" alt="Yuh Frigga yuh!" style="width:304px;height:228px;">
+<img src="cm_logo.png" alt="Image could not be displayed" style="width:304px;height:228px;">
 </div>
 
 </body>

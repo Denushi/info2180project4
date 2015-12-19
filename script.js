@@ -99,20 +99,46 @@ function add(){
 	'<div id="div1">',
 	'<fieldset id= "form">',
 	'<legend class="extra">ADD NEW USER</legend>',
-	'<form action="" method="post">',
+	'<form>',
 	'First Name:<input type="text" id="fname" name="firstname" placeholder="First Name" required/><br><br>',
 	'Last Name:<input type="text" id ="lname"name="lastname" placeholder="Surname" required/><br><br>',
 	'Username:<input type="text" id="uname"name="username" placeholder="Username" required/><br><br>',
-	'PassWord:<input type="password" id="pword"name="password" placeholder ="Password" required title ="Password should have at least one capital letter, one number and should be at least 8 characters long"/><span><?php echo $passErr;?></span><br> <br>          ',
-	'Type:   <select name="type">',
+	'Password:<input type="password" id="pword" name="password" placeholder ="Password" required title ="Password should have at least one capital letter, one number and should be at least 8 characters long"/><span><?php echo $passErr;?></span><br> <br>          ',
+	'Type:   <select name="type" id="type" name="type">',
 	'<option value="user">Standard User</option>',
 	'<option value="admin">Administrator</option>',
 	'</select> ',
 	'<br><br>',
-	'</a><input type="submit" id ="add" value="Add User Now!"/>',
+	'</a><input type="Button" id ="submit" name="submit" value="Add User Now!"/>',
 	'</form>',
 	'</fieldset>',
 	'</div>',
 ].join('');
 document.getElementById("container").innerHTML=add_user;
+document.getElementById("submit").onclick=new_user;
+}
+
+function new_user()
+{
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var username = document.getElementById("uname").value;
+    var password = document.getElementById("pword").value;
+    var type = document.getElementById("type").value;
+    var request = "fname="+fname+"&lname="+lname+"&username="+username+"&password="+password+"&type="+type;
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("post","database.php",true);
+    xmlHttp.onreadystatechange = function()
+    {
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
+            var responseMessage = xmlHttp.responseText;
+            alert(responseMessage);
+            add();            
+        }
+    };
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlHttp.setRequestHeader("Content-length", request.length);
+    xmlHttp.setRequestHeader("Connection", "close");    
+    xmlHttp.send(request);
 }
