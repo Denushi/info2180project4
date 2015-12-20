@@ -43,7 +43,7 @@
    </div>
       
 <div class="container" id="container">
-<img src="cm_logo.png" alt="Yuh Frigga yuh!" style="width:304px;height:228px;">
+<img src="cm_logo.png" alt="Image cannot be displayed" style="width:50%;height:50%;">
 </div>
 
 </body>

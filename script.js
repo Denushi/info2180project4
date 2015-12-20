@@ -77,7 +77,7 @@ function inbox()
 function read_message()
 {
     alert("you did it");
-    /**var xmlHttp = new XMLHttpRequest();
+    var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState==4 && xmlHttp.status==200){
             var responseMessage = xmlHttp.responseText;
@@ -85,8 +85,8 @@ function read_message()
             // document.getElementById("pagecontent").innerHTML= responseMessage;
         }
     };
-    xmlHttp.open("GET","read_message.php",true);
-    xmlHttp.send();**/
+    xmlHttp.open("post","read_message.php",true);
+    xmlHttp.send();
     
 }
 

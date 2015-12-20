@@ -1,18 +1,17 @@
-<style>
-	.unread{
-  		
-  		font-weight: bolder;
-  		color: red;
-  		font-family: arial-black;
+<style >
+	table{
+  		border:2px dashed red;   
+  		width: 100%;
+  		height: 100%;
 	}
 
-	.read{
-		font-weight: normal;
-		color: black;
-	}
+	th{
+  		border:2px solid white;
+	}	
 
-	.header{
-		font:40px bold arial-black;
+	td{
+  		border:2px solid white;
+  		color:red;
 	}
 </style>
 
@@ -59,7 +58,7 @@
 		    }
 		    if($x<10)
 		    {
-				echo '<tr onclick="read_message;">';
+				echo '<tr onclick="read_message();">';
 				echo '<td class="unread">'.$sender_username.'</td>';
 				echo '<td class="unread">'.$row2['subject'].'</td>';
 				echo '<td class="unread">'.$row2['body'].'</td>';
