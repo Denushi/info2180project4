@@ -10,7 +10,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="styles.css" type ="text/css">
    <script src="script.js" type ="text/javascript"></script>
-   <title>CheapoMail</title>
+   <title>CheapoMail - <?php echo $login_name; ?></title>
 </head>
 <body>
    <div id= "head">
@@ -19,7 +19,7 @@
    </span>
    
    <div id ="but">  
-   Hello <strong><?php echo $login_session; ?></strong>!! 
+   Hello <strong><?php echo $login_name; ?></strong>!! 
    <a id ="adm" href="page.php">Add User</a>
    <a href ="logout.php">Log Out</a>
    </div>

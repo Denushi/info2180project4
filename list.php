@@ -1,8 +1,26 @@
-<table id="table_header">
+<style>
+	.unread{
+  		
+  		font-weight: bolder;
+  		color: red;
+  		font-family: arial-black;
+	}
+
+	.read{
+		font-weight: normal;
+		color: black;
+	}
+
+	.header{
+		font:40px bold arial-black;
+	}
+</style>
+
+<table>
 	<tr>
-		<th id ="header1">From</th>
-		<th id ="header2">Subject</th>
-		<th id ="header3">Body</th>
+		<th class="header">From</th>
+		<th class="header">Subject</th>
+		<th class="header">Body</th>
 	</tr>
 
 <?php
@@ -41,11 +59,11 @@
 		    }
 		    if($x<10)
 		    {
-				echo '<tr onclick="read_message();">';
-				echo "<td>".$sender_username."</td>";
-				echo "<td>".$row2['subject']."</td>";
-				echo "<td>".$row2['body']."</td>";
-				echo "</tr>";
+				echo '<tr onclick="read_message;">';
+				echo '<td class="unread">'.$sender_username.'</td>';
+				echo '<td class="unread">'.$row2['subject'].'</td>';
+				echo '<td class="unread">'.$row2['body'].'</td>';
+				echo '</tr>';
 			}
 			$x=$x+1;
 		}

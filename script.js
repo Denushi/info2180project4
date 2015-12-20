@@ -67,16 +67,17 @@ function inbox()
         if(xmlHttp.readyState==4 && xmlHttp.status==200)
         {
             var response = xmlHttp.responseText;
-            document.getElementById("container").innerHTML= response;
+            document.getElementById("container").innerHTML= response;            
         }
     };
     xmlHttp.open("post","list.php",true);
     xmlHttp.send();
 }
 
-function read()
+function read_message()
 {
-    var xmlHttp = new XMLHttpRequest();
+    alert("you did it");
+    /**var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function(){
         if(xmlHttp.readyState==4 && xmlHttp.status==200){
             var responseMessage = xmlHttp.responseText;
@@ -85,7 +86,7 @@ function read()
         }
     };
     xmlHttp.open("GET","read_message.php",true);
-    xmlHttp.send();
+    xmlHttp.send();**/
     
 }
 

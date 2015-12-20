@@ -9,7 +9,11 @@
 	// SQL Query To Fetch Complete Information Of User
 	$ses_sql=mysql_query("select username from User where username='$user'", $conn);
 	$row = mysql_fetch_assoc($ses_sql);
-	$login_session =$row['username'];
+	$name_sql=mysql_query("select firstname from User where username='$user'", $conn);
+	$row2 = mysql_fetch_assoc($name_sql);
+	$login_session = $row['username'];
+	$login_name = $row2['firstname'];
+
 	if(!isset($login_session))
 	{
 		mysql_close($connection); // Closing Connection
