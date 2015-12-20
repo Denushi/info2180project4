@@ -67,7 +67,6 @@ function inbox()
         if(xmlHttp.readyState==4 && xmlHttp.status==200)
         {
             var response = xmlHttp.responseText;
-            //alert(response);
             document.getElementById("container").innerHTML= response;
         }
     };
