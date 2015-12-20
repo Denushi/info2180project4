@@ -1,3 +1,8 @@
+<!--Group members
+
+Michael-Shane Brown - 620054354
+Denton McLaren - 620071262
+Danielle Blake - 620081194-->
 <?php 
     $messageid = $_REQUEST['id'];
     $messagesender = $_REQUEST['sender'];

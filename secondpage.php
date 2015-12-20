@@ -1,3 +1,8 @@
+<!--Group members
+
+Michael-Shane Brown - 620054354
+Denton McLaren - 620071262
+Danielle Blake - 620081194-->
 <?php
   include('session.php');
 ?>
@@ -15,7 +20,7 @@
 <body>
    <div id= "head">
     <span>
-   <strong>CheapoMail: Messages</strong>
+   <strong>CheapoMail</strong>
    </span>
    
    <div id ="but">  
@@ -43,7 +48,7 @@
    </div>
       
 <div class="container" id="container">
-<img src="cm_logo.png" alt="Image cannot be displayed" style="width:50%;height:50%;">
+<img src="cm_logo.png" alt="Image cannot be displayed" style="width:100%;height:100%;">
 </div>
 
 </body>

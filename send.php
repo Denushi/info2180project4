@@ -1,3 +1,8 @@
+<!--Group members
+
+Michael-Shane Brown - 620054354
+Denton McLaren - 620071262
+Danielle Blake - 620081194-->
 <?php
   include('session.php');
   $rec = $_POST["to"];
@@ -41,8 +46,8 @@
         {
           while($row2=mysql_fetch_array($receiverresponse))
           {
-            $sql = "insert into Message (body,subject,user_id,recipient_id) values ('$message','$subject','$row[id]','$row2[id]');";
-            mysql_query($sql,$con); 				      				
+            $sql = "insert into Message (body,subject,user_id,recipient_id,flag) values ('$message','$subject','$row[id]','$row2[id]','unread');";
+            mysql_query($sql,$con);     				
           }
         }
 

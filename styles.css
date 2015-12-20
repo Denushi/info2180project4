@@ -1,3 +1,8 @@
+/*Group members
+
+Michael-Shane Brown - 620054354
+Denton McLaren - 620071262
+Danielle Blake - 620081194*/
 body{
   background-image: url("http://img.hdwallpaperpc.com/cover/150/Abstract_Other_just_blue_Simple_sky_light_clean_149859_detail_thumb.jpg");
     position: relative;
@@ -212,5 +217,41 @@ span{
   font-size:50px;
 }
 
+table{
+      border:2px dashed red;   
+      width: 100%;
+      height: 100%;
+}
 
+th{
+      border:2px solid white;
+} 
+
+td{
+      border:2px solid white;
+}
+
+#inbox-header{
+  font-size: 20px;
+}
+
+.message-row:hover{
+  background-color: green;
+}
+
+#error{
+  font-size: 80px;
+  text-align: center;
+}
+
+#error-div{
+  border: dashed red 5px;
+  margin-top: 40px;
+}
+
+.unread{
+  color: red;
+  font-weight: bolder;
+  font-size: 20px;
+}
 

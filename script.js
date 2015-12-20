@@ -1,3 +1,8 @@
+/*Group members
+
+Michael-Shane Brown - 620054354
+Denton McLaren - 620071262
+Danielle Blake - 620081194*/
 /*$(document).ready(function () {
 
 
@@ -14,7 +19,7 @@ window.onload=function(){
 function home()
 {
 	var defaultPanel=[
-	'<img src="cm_logo.png" alt="Yuh Frigga yuh!" style="width:304px;height:228px;">'].join('');
+	'<img src="cm_logo.png" alt="Image could not be displayed" style="width:100%;height:100%;">'].join('');
 	document.getElementById("container").innerHTML = defaultPanel;
 }
 
