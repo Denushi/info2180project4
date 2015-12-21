@@ -1,8 +1,3 @@
-<!--Group members
-
-Michael-Shane Brown - 620054354
-Denton McLaren - 620071262
-Danielle Blake - 620081194-->
 <?php
 	// Establishing Connection with Server by passing server_name, user_id and password as a parameter
 	$conn = mysql_connect("localhost", "root", "Mightyena1");

@@ -1,57 +1,69 @@
-<!--Group members
-
-Michael-Shane Brown - 620054354
-Denton McLaren - 620071262
-Danielle Blake - 620081194-->
-<?php 
-    $messageid = $_REQUEST['id'];
-    $messagesender = $_REQUEST['sender'];
-    $flag = $_REQUEST['flag'];
-    $con=mysqli_connect("127.8.14.1","chineyting", "" ,"cheapomail");
-    if (!$con) {
+<?php 	
+    include('session.php');
+	$con=mysql_connect("localhost","root","Mightyena1");
+	$db = mysql_select_db("CheapoMail",$con);
+    if (!$con) 
+    {
     	echo "Connection failed";
     	return false;
     }
     
     
-    if(isset($_COOKIE['username'])){
-        //echo "cookie set";
-		$current_user = $_COOKIE['username'];
-		$messagequery =  "SELECT * FROM message WHERE id = '$messageid'";
-		$messageinfo = mysqli_query($con,$messagequery);
-		while($row=mysqli_fetch_array($messageinfo)){
-		    //echo"In the while";
+    if(isset($_SESSION['logged_in']))
+    {
+        $messageid=$_POST["id"];
+		$username = $user;
+		$messagequery =  "select * from Message where id = '$messageid'";
+		$messageinfo = mysql_query($messagequery,$con);
+		while($row=mysql_fetch_array($messageinfo))
+		{
 			$message_body= $row['body'];
 			$message_subject= $row['subject'];
-			//$message_body= $row['body'];
-		    
-		    echo "<div class='readme'>";
-		    echo "<div id='subject2'>".$message_subject."</div>"; 
-		    echo "<hr id='hr2'>";
-		    echo "<div id='from'><strong>From: </strong>".$messagesender."</div>";
+			$messagesender= $row['user_id'];
+			$flag = $row['flag'];
+			//echo $flag;
+
+			$sender_namequery = "select firstname from User where id = '$messagesender'";			
+		    $sender_query=mysql_query($sender_namequery,$con);
+		    $sender=mysql_fetch_array($sender_query);
+		   	echo "<div class='read_zoom'>";
+		    echo "<div class='top-form'><strong>Subject: </strong>".$message_subject."</div><br>"; 		    
+		    echo "<div class='top-form'><strong>Sender: </strong>".$sender['firstname']."</div>";
+		    echo "<hr id='hr'>";
 		    echo "<p id='message_body'>".$message_body."</p>";
 		    echo "</div>";
-		}
-		if($flag == 0){
-		    $useridstring=  "SELECT id FROM user WHERE username = '$current_user'";
-		    $useridquery = mysqli_query($con,$useridstring);
-		    while($row2=mysqli_fetch_array($useridquery)){
+		    echo "<br>";
+		    echo "<div>";
+		    echo "<input type=\"Button\" id=\"back\" value=\"Return to Inbox\"/>";
+		    echo "</div>";
+		 }
+		
+		if(strcmp($flag,"unread")==0)
+		{
+		    $useridstring =  "select id from User where username = '$username'";
+		    $useridquery = mysql_query($useridstring,$con);
+		    while($row2=mysql_fetch_array($useridquery))
+		    {
 		        $date = date("Y/m/d");
 		        $userid=$row2['id'];
-		        $sql= "INSERT INTO message_read (message_id,reader_id,date) VALUES ('$messageid','$userid','$date');";
-		        if (!mysqli_query($con,$sql)){
-  					    //die('Error: ' . mysqli_error($con));
+		        $sql= "insert into Message_Read (message_id,reader_id,r_date,flag) values ('$messageid','$userid','$date','read');";
+		  		$sql2 = "update Message set flag='read' where id='$messageid';";     
+		        if (!mysql_query($sql,$con) || !mysql_query($sql2,$con))
+		        {
   					    echo "ERROR";
+  				}
+  				else
+  				{
+  					mysql_query($sql,$con);
+  					mysql_query($sql2,$con);
   				}
 
 		    }
 		    
 		}
-	}else{
-	    
-	    
+	}
+	else
+	{
 	    echo "Not logged in";
 	}
-
-
 ?>

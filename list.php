@@ -1,13 +1,10 @@
-<!--Group members
-
-Michael-Shane Brown - 620054354
-Denton McLaren - 620071262
-Danielle Blake - 620081194-->
 <?php
 	include('session.php');
 	$con=mysql_connect("localhost","root","Mightyena1");
 	$db = mysql_select_db("CheapoMail",$con);
 	$x=0;
+	$y=0;
+	$unread=0;
 	if (!$con)
 	{
 		echo "Connection failed\n";
@@ -34,7 +31,17 @@ Danielle Blake - 620081194-->
 		}
 		else
 		{
-			echo '<h1 id="inbox-header">View up to 10 of your most recent messages here:<br>Unread messages are displayed in bold red font.</h1>';
+			while($row2=mysql_fetch_array($messagequery))
+			{
+				$flag= $row2['flag'];
+				if (strcmp($flag,"unread")==0)
+			    {
+					$unread=$unread+1;
+				}
+			}		
+
+			echo '<h1 id="inbox-header">View up to 10 of your most recent messages here:<br>Unread messages are displayed in bold red font.</h1><br>';
+			echo '<h1 id="inbox-header">Unread messages: <span id="display">'.$unread.' </span></h1>';
 			echo '<hr/>';
 			echo '<table>';
 			echo '<tr>';
@@ -43,9 +50,15 @@ Danielle Blake - 620081194-->
 			echo '<th>Body</th>';
 			echo '</tr>';
 
+			$messagestring="select * from Message where recipient_id ='$id' order by id desc;";
+			$messagequery = mysql_query($messagestring,$con);
+
 			while($row2=mysql_fetch_array($messagequery))
 			{
-			    $sender= $row2['user_id'];
+				$y=$x+1;
+			    $sender = $row2['user_id'];
+			    $messageid = $row2['id'];
+			    $flag= $row2['flag'];
 			    
 			    $senderstring =  "select username from User where id = '$sender'";
 			    $senderquery = mysql_query($senderstring,$con);
@@ -55,16 +68,29 @@ Danielle Blake - 620081194-->
 			    }
 			    if($x<10)
 			    {
-					echo '<tr class="message-row"onclick="read_message();">';
-					echo '<td class="unread">'.$sender_username.'</td>';
-					echo '<td class="unread">'.$row2['subject'].'</td>';
-					echo '<td class="unread">'.$row2['body'].'</td>';
-					echo '</tr>';
+			    	if (strcmp($flag,"unread")==0)
+			    	{
+						echo '<tr class="message-row" id="'.$messageid.'" onclick="read_message('.$messageid.');">';
+						echo '<td class="unread">'.$sender_username.'</td>';
+						echo '<td class="unread">'.$row2['subject'].'</td>';
+						echo '<td class="unread">'.$row2['body'].'</td>';
+						echo '</tr>';						
+					}
+					else
+					{
+						echo '<tr class="message-row" id="'.$messageid.'" onclick="read_message('.$messageid.');">';
+						echo '<td class="read">'.$sender_username.'</td>';
+						echo '<td class="read">'.$row2['subject'].'</td>';
+						echo '<td class="read">'.$row2['body'].'</td>';
+						echo '</tr>';
+					}
 				}
 				$x=$x+1;
 			}
 		}
-	}else{
+	}
+	else
+	{
 	    echo "Not logged in";
 	}
 ?>

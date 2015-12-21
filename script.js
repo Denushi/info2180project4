@@ -13,7 +13,7 @@ Danielle Blake - 620081194*/
 window.onload=function(){
   document.getElementById("compose").onclick= compose_message;
   document.getElementById("inbox").onclick=inbox;
-  document.getElementById("add").onclick=add;
+  document.getElementById("add").onclick=add;  
 }
 
 function home()
@@ -56,9 +56,7 @@ function send_message()
     };
     xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlHttp.setRequestHeader("Content-length", request.length);
-   	xmlHttp.setRequestHeader("Connection", "close");
-    
-    
+   	xmlHttp.setRequestHeader("Connection", "close");    
     xmlHttp.send(request);
     
 }
@@ -79,20 +77,25 @@ function inbox()
     xmlHttp.send();
 }
 
-function read_message()
+function read_message(id)
 {
-    alert("you did it");
+    var messageid = document.getElementById(id).id;
+    var request = "id="+messageid;
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function(){
-        if(xmlHttp.readyState==4 && xmlHttp.status==200){
+    xmlHttp.open("post","read_message.php",true);
+    xmlHttp.onreadystatechange = function()
+    {
+        if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+        {
             var responseMessage = xmlHttp.responseText;
-           
-            // document.getElementById("pagecontent").innerHTML= responseMessage;
+            document.getElementById("container").innerHTML=responseMessage; 
+            document.getElementById("back").onclick=inbox;
         }
     };
-    xmlHttp.open("post","read_message.php",true);
-    xmlHttp.send();
-    
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlHttp.setRequestHeader("Content-length", request.length);
+    xmlHttp.setRequestHeader("Connection", "close");    
+    xmlHttp.send(request);      
 }
 
 

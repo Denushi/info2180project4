@@ -255,3 +255,24 @@ td{
   font-size: 20px;
 }
 
+.read{
+  color: black;
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.top-form{
+  font: 20px bold arial-black;
+}
+
+.read_zoom{
+  width:100%;
+  height: 100%;
+  border: dashed red 2px;
+  margin-top: 60px;
+}
+
+#display{
+  color:green;
+  font-size: 30px;
+}
